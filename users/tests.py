@@ -3,6 +3,9 @@ from django.test import TestCase
 from rest_framework.test import APIRequestFactory, force_authenticate
 from rest_framework import status
 from users.views import UserGenericViewSet
+from rest_framework.authtoken.models import Token
+from django.urls import reverse
+from rest_framework.test import APITestCase
 
 User = get_user_model()
 
@@ -67,3 +70,23 @@ class UserGenericViewSetTestCase(TestCase):
         force_authenticate(request, user=self.user)
         response = view(request, user_id=self.user.pk)
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+
+
+class CustomAuthTokenTestCase(APITestCase):
+
+    def test_custom_auth_token(self):
+        url = reverse('custom-auth-token')
+        data = {'username': 'your_username', 'password': 'your_password'}
+        response = self.client.post(url, data, format='json')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertIn('token', response.data)
+
+    def test_invalidate_token(self):
+        user = User.objects.create_user(
+            username='testuser', password='testpassword')
+        token = Token.objects.create(user=user)
+        self.client.credentials(HTTP_AUTHORIZATION=f'Token {token.key}')
+        url = reverse('invalidate-token')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertFalse(Token.objects.filter(user=user).exists())

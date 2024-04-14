@@ -1,0 +1,25 @@
+version: "3"
+services:
+  db:
+    image: mysql:8
+    ports:
+      - "3306:3306"
+    restart: always
+    environment:
+      - MYSQL_INITDB_ARGS=--innodb-fast-shutdown=0
+      - MYSQL_DATABASE=word_weaver_db
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=mysql
+      - MYSQL_ROOT_PASSWORD=mysql
+      - MYSQL_HOST=localhost
+      - MYSQL_PORT=3306
+    expose:
+      - "3306"
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    restart: always
