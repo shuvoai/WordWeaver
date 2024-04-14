@@ -148,7 +148,7 @@ class UserGenericViewSet(GenericViewSet):
         try:
             user = self.get_object()
             user.delete()
-            response = Response()
+            response = Response(status=status.HTTP_204_NO_CONTENT)
             return customize_response(response, _('User Delete Successful'))
         except Http404 as excpt:
             return exception_handler(

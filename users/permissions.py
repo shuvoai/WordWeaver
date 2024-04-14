@@ -7,7 +7,6 @@ class IsOwner(BasePermission):
     code = 403
 
     def has_object_permission(self, request, view, obj):
-        breakpoint()
         return request.user == obj
 
 
