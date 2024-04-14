@@ -1,0 +1,6 @@
+#!/bin/bash
+
+docker system prune -a -f >/dev/null 2>&1
+docker system prune --all -f --volumes >/dev/null 2>&1
+docker volume prune -f >/dev/null 2>&1
+docker builder prune -a -f >/dev/null 2>&1
