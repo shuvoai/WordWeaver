@@ -46,4 +46,10 @@
     <pre>python manage.py runserver</pre>
 </ol>
     <p>The system will be running on http://localhost:8000</p>
-
+<h3>Checking test cases</h3>
+<ol>
+    <li>check all the test case</li>
+    <pre>python manage.py test</pre>
+    <li>check the test cases of a specific app</li>
+    <pre>python manage.py test your_app_name</pre>
+</ol>
