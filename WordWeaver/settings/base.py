@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'drf_spectacular',
     'rest_framework.authtoken',
+    'django_extensions',
     # local apps
     'users.apps.UsersConfig',
     'blog.apps.BlogConfig'
