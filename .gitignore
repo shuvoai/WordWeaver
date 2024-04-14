@@ -1,0 +1,13 @@
+#cache files
+*/__pycache__/
+*/*/__pycache__/
+*/*/*/__pycache__/
+
+.env
+dump.rdb
+/media/*
+/logs/*
+.idea
+/public/
+/venv/
+db.sqlite3
