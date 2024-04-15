@@ -53,3 +53,11 @@
     <li>check the test cases of a specific app</li>
     <pre>python manage.py test your_app_name</pre>
 </ol>
+<h3>Docker</h3>
+<ol>
+    <li>Build the Docker image</li>
+    <pre>docker build -t wordweaver .</pre>
+    <li>Run the Docker container</li>
+    <pre>docker-compose up</pre>
+</ol>
+
