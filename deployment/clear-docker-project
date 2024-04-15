@@ -1,5 +1,0 @@
-#!/bin/bash
-
-docker stop $(docker ps -a -q --filter "name=wordweaver") >/dev/null 2>&1
-
-exit 0
