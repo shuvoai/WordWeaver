@@ -29,13 +29,14 @@
     <pre>pip install -r requirements.txt</pre>
     <li>Create a .env file in the root directory with the following information:</li>
     <pre>
-    SECRET_KEY=<your Django secret key>
+    SECRET_KEY=
     DEBUG=True
-    DB_NAME=<your MySQL database name>
-    DB_USER=<your MySQL database user>
-    DB_PASSWORD=<your MySQL database password>
-    DB_HOST=<your MySQL host>
-    DB_PORT=<your MySQL port>
+    DB_NAME=
+    DB_USER=root
+    DB_PASS=
+    DB_HOST=mariadb
+    DB_PORT=3306
+    DJANGO_SETTINGS_MODULE=WordWeaver.settings.local
     </pre>
     <li>Run migrations</li>
     <pre>python manage.py makemigrations</pre>
